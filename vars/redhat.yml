@@ -1,0 +1,4 @@
+# RedHat-specific variables for postfix
+---
+postfix_install:
+ - postfix
