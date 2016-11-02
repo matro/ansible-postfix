@@ -12,3 +12,15 @@
     - configuration
     - postfix
     - postfix-install
+
+- name: install package
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+  with_items: "{{ postfix_install }}"
+  tags:
+    - configuration
+    - postfix
+    - postfix-install
