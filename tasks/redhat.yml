@@ -1,0 +1,12 @@
+# Redhat-specific postfix tasks
+---
+
+- name: install package
+  package:
+    name={{ item }}
+    state=present
+  with_items: "{{ postfix_install }}"
+  tags:
+    - configuration
+    - postfix
+    - postfix-install
