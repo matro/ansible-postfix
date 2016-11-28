@@ -93,3 +93,21 @@
     - configuration
     - postfix
     - postfix-start-enable-service
+
+- name: set cron jobs
+  cron:
+    name: "Postfix - {{ item.name }}"
+    minute: "{{ item.minute | default('*') }}"
+    hour: "{{ item.hour | default('*') }}"
+    day: "{{ item.day | default('*') }}"
+    weekday: "{{ item.weekday | default('*') }}"
+    job: "{{ item.job }}"
+    user: "{{ item.user | default('root') }}"
+    state: "{{ item.state | default('present') }}"
+    disabled: "{{ item.disabled | default('no') }}"
+  with_items: "{{ postfix_cron_jobs | default() }}"
+  when: postfix_cron_jobs is defined
+  tags:
+    - configuration
+    - postfix
+    - cron
