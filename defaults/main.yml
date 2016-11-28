@@ -16,9 +16,20 @@ postfix_sasl_auth_enable: true
 postfix_sasl_user: "postmaster@{{ ansible_domain }}"
 postfix_sasl_password: 'k8+haga4@#pR'
 postfix_sasl_security_options: noanonymous
+postfix_transport: false
+postfix_transport_file: "/etc/postfix/transport"
 postfix_inet_interfaces: all
 postfix_inet_protocols: all
 postfix_mynetworks:
   - 127.0.0.0/8
   - '[::ffff:127.0.0.0]/104'
   - '[::1]/128'
+
+# Local Paths
+postfix_queue_directory: "/var/spool/postfix"
+postfix_command_directory: "/usr/sbin"
+postfix_daemon_directory: "/usr/libexec/postfix"
+postfix_data_directory: "/var/lib/postfix"
+
+# Queue and Process Ownership
+postfix_mail_owner: "postfix"
