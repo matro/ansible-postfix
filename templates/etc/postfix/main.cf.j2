@@ -53,3 +53,7 @@ smtp_tls_note_starttls_offer = yes
 {% else %}
 relayhost =
 {% endif %}
+
+{% if postfix_transport %}
+transport_maps = hash:{{ postfix_transport_file }}
+{% endif %}
