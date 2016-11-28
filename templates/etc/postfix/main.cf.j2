@@ -57,3 +57,12 @@ relayhost =
 {% if postfix_transport %}
 transport_maps = hash:{{ postfix_transport_file }}
 {% endif %}
+
+# Local Paths
+queue_directory = {{ postfix_queue_directory }}
+command_directory = {{ postfix_command_directory }}
+daemon_directory = {{ postfix_daemon_directory }}
+data_directory = {{ postfix_data_directory }}
+
+# Queue and Proceess Ownership
+mail_owner = {{ postfix_mail_owner }}
