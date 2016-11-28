@@ -1,3 +1,10 @@
+# {{ ansible_managed }}
+
+{% for line in postfix_transport_lines %}
+{{ line }}
+{% endfor %}
+
+
 # TRANSPORT(5)                                                      TRANSPORT(5)
 # 
 # NAME
