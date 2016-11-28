@@ -35,6 +35,19 @@
     - postfix
     - postfix-configuration
 
+- name: update tranport file
+  template:
+    src: etc/postfix/transport.j2
+    dest: /etc/postfix/transport
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart postfix
+  tags:
+    - configuration
+    - postfix
+    - postfix-configuration
+
 - name: configure sasl username/password
   template:
     src: etc/postfix/sasl_passwd.j2
