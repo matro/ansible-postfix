@@ -22,10 +22,23 @@
     - postfix
     - postfix-mailname
 
-- name: update configuration file
+- name: update main configuration file
   template:
     src: etc/postfix/main.cf.j2
     dest: /etc/postfix/main.cf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart postfix
+  tags:
+    - configuration
+    - postfix
+    - postfix-configuration
+
+- name: update master configuration file
+  template:
+    src: etc/postfix/master.cf.j2
+    dest: /etc/postfix/master.cf
     owner: root
     group: root
     mode: 0644
