@@ -37,7 +37,11 @@ proxywrite unix -       -       n       -       1       proxymap
 smtp      unix  -       -       n       -       -       smtp
 # When relaying mail as backup MX, disable fallback_relay to avoid MX loops
 relay     unix  -       -       n       -       -       smtp
+{% if postfix_smtp_fallback_relay == true %}
 	-o smtp_fallback_relay=
+{% elif postfix_smtp_fallback_relay == false %}
+#	-o smtp_fallback_relay=
+{% endif %}
 #       -o smtp_helo_timeout=5 -o smtp_connect_timeout=5
 showq     unix  n       -       n       -       -       showq
 error     unix  -       -       n       -       -       error
